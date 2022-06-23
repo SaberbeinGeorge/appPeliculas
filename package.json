@@ -1,0 +1,19 @@
+{
+  "name": "apirestpractico",
+  "version": "1.0.0",
+  "description": "aplicacion para ver peliculas",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaberbeinGeorge/appPeliculas.git"
+  },
+  "author": "George",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SaberbeinGeorge/appPeliculas/issues"
+  },
+  "homepage": "https://github.com/SaberbeinGeorge/appPeliculas#readme"
+}
