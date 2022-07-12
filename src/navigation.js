@@ -1,4 +1,5 @@
 const navigationHistory = [];
+
 searchFormBtn.addEventListener('click', () => {
   location.hash = `#search=${searchFormInput.value}`;
   const [_, query] = location.hash.split('=');
@@ -14,10 +15,11 @@ arrowBtn.addEventListener('click', () => {
   if(navigationHistory.length >= 2){
     function resolve () {
       navigationHistory.pop();
+      //ultimo elemento del array
       const ultimateElement = navigationHistory[navigationHistory.length - 1];
       return ultimateElement;
     }
-    backPage(resolve())
+    backHistory(resolve())
   } else {
     location.hash = '#home';
   }
@@ -106,7 +108,7 @@ function movieDetailsPage() {
   movieDetailSection.classList.remove('inactive');
 }
 
-function backPage(query) {
+function backHistory(query) {
   console.log('back!!');
   console.log(query)
   headerSection.classList.remove('header-container--long');
