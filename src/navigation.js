@@ -1,9 +1,9 @@
-const navigationHistory = [];
+/* const navigationHistory = []; */
 
 searchFormBtn.addEventListener('click', () => {
   location.hash = `#search=${searchFormInput.value}`;
-  const [_, query] = location.hash.split('=');
-  navigationHistory.push(query);
+  /* const [_, query] = location.hash.split('=');
+  navigationHistory.push(query); */
 });
 
 
@@ -12,7 +12,7 @@ trendingBtn.addEventListener('click', () => {
 });
 
 arrowBtn.addEventListener('click', () => {
-  if(navigationHistory.length >= 2){
+  /* if(navigationHistory.length >= 2){
     function resolve () {
       navigationHistory.pop();
       //ultimo elemento del array
@@ -22,7 +22,8 @@ arrowBtn.addEventListener('click', () => {
     backHistory(resolve())
   } else {
     location.hash = '#home';
-  }
+  } */
+  history.back()
 });
 
 window.addEventListener('DOMContentLoaded', navigator, false);
@@ -93,7 +94,7 @@ function categoriesPage() {
 
 function movieDetailsPage() {
   console.log('Movie!!');
-
+  
   headerSection.classList.add('header-container--long');
   // headerSection.style.background = '';
   arrowBtn.classList.remove('inactive');
@@ -106,9 +107,13 @@ function movieDetailsPage() {
   categoriesPreviewSection.classList.add('inactive');
   genericSection.classList.add('inactive');
   movieDetailSection.classList.remove('inactive');
+  
+  const [_, movieId] = location.hash.split('=');
+  getMovieById(movieId);
+  getMoviesSimilar(movieId);
 }
 
-function backHistory(query) {
+/* function backHistory(query) {
   console.log('back!!');
   console.log(query)
   headerSection.classList.remove('header-container--long');
@@ -125,7 +130,7 @@ function backHistory(query) {
   movieDetailSection.classList.add('inactive');
 
   getMoviesBySearch(query);
-}
+} */
 
 function searchPage() {
   console.log('Search!!');
@@ -162,4 +167,7 @@ function trendsPage() {
   categoriesPreviewSection.classList.add('inactive');
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
+
+  headerCategoryTitle.innerHTML = 'Tendencias';
+  getTrendingMovies();
 }
