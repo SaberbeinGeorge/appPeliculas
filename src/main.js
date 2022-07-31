@@ -7,6 +7,7 @@ const api = axios.create({
         'api_key': API_KEY,
     },
 });
+
 function loadCategory(container, category) {
     container.innerHTML = '';
     category.forEach(category => {
@@ -25,6 +26,29 @@ function loadCategory(container, category) {
       categoriesTitle.appendChild(categoriesTitleText);
   });
 }
+/* function loadCuadroSkeletor(container) {
+        for (let i = 0; i < 5; i++) {
+            const movieContainer = document.createElement('div');
+            movieContainer.classList.add('movie-container');
+            movieContainer.style.height = '225px';
+            movieContainer.style.width = '150px'
+            movieContainer.classList.add('loading');
+            movieContainer.style.borderRadius = '5px';
+            container.appendChild(movieContainer); 
+        }
+}; */
+/* function categorySkeletor(container) {
+    for (let i = 0; i < 8; i++) {
+        const categoriesContainer = document.createElement('div');
+        categoriesContainer.classList.add('category-container');
+        categoriesContainer.style.height = '20px'
+        categoriesContainer.style.width = '100px';
+        categoriesContainer.style.margin = '5px';
+        categoriesContainer.style.borderRadius = '5px';
+        categoriesContainer.classList.add('loading');
+        container.appendChild(categoriesContainer);
+    }     
+}; */
 
 function loadImage(container, iterator) {
     container.innerHTML = '';
@@ -116,5 +140,5 @@ async function getMoviesSimilar(movie_id) {
     headerSection.classList.add('.header-container--long');
     loadImage(relatedMoviesContainer, movie.results);
 }
-getTrendingMoviesPreview();
-getCategoriesPreview();
+ /* getTrendingMoviesPreview(); */
+/* getCategoriesPreview(); */

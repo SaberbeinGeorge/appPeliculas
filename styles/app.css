@@ -105,6 +105,25 @@ button {
   cursor: pointer;
 }
 
+.movie-container--loading {
+  background: var(--purple-light-2);
+  border-radius: 8px;
+  height: 225px;
+  min-height: 225px;
+  max-height: 225px;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+}
+.movie-container--loading:nth-child(2) {
+  animation-delay: .2s;
+}
+.movie-container--loading:nth-child(3) {
+  animation-delay: .4s;
+}
+
 .movie-img {
   border-radius: 8px;
 }
@@ -121,6 +140,7 @@ button {
 /* Header */
 .header-container {
   padding-top: 40px;
+  max-height: 225px;
 }
 
 .header-container--long {
@@ -356,4 +376,59 @@ footer {
 /* Navigation */
 .inactive {
   display: none;
+}
+
+/* .loading {
+  background: linear-gradient(45deg,var(--purple-medium-3),var(--purple-medium-1),var(--purple-medium-3),var(--purple-light-2));
+  background-size: 400% 400%;
+  background-repeat: no-repeat;
+  animation: cambiar 10s ease-in-out infinite;
+  border-radius: 10px;
+  width: 100px;
+  height: 20px;
+}
+@keyframes cambiar{
+  0%{background-position: 0 50%;}
+  50%{background-position: 100% 50%;}
+  100%{background-position: 0 50%;}
+}
+
+.marcos {
+  border-radius: 10px;
+
+} */
+
+.category-container--loading {
+  background: var(--purple-light-2);
+  border-radius: 8px;
+  height: 25px;
+  min-height: 25px;
+  max-height: 25px;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  margin-bottom: 15px;
+  animation: loading-skeleton infinite 1.5s;
+}
+.category-container--loading:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.relatedMovies-scrollContainer .movie-container--loading {
+  width: 125px;
+  min-width: 125px;
+  max-width: 125px;
+  height: 187.5px;
+  min-height: 187.5px;
+  max-height: 187.5px;
+}
+
+/* Animations */
+@keyframes loading-skeleton {
+  0%, 100% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 0%;
+  }
 }

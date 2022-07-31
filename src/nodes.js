@@ -4,6 +4,8 @@ const trendingPreviewSection = document.querySelector('#trendingPreview');
 const categoriesPreviewSection = document.querySelector('#categoriesPreview');
 const genericSection = document.querySelector('#genericList');
 const movieDetailSection = document.querySelector('#movieDetail');
+const footer = document.querySelector('.footer');
+const htmlClass = document.querySelector('.html');
 
 // Lists & Containers
 const searchForm = document.querySelector('#searchForm');
@@ -16,6 +18,8 @@ const relatedMoviesContainer = document.querySelector('.relatedMovies-scrollCont
 const headerTitle = document.querySelector('.header-title');
 const arrowBtn = document.querySelector('.header-arrow');
 const headerCategoryTitle = document.querySelector('.header-title--categoryView');
+const trendingPreviewTitle = document.querySelector('.trendingPreview-title');
+const categoryPreviewTitle = document.querySelector('.categoriesPreview-title');
 
 const searchFormInput = document.querySelector('#searchForm input');
 const searchFormBtn = document.querySelector('#searchBtn');
@@ -25,7 +29,6 @@ const trendingBtn = document.querySelector('.trendingPreview-btn');
 const movieDetailTitle = document.querySelector('.movieDetail-title');
 const movieDetailDescription = document.querySelector('.movieDetail-description');
 const movieDetailScore = document.querySelector('.movieDetail-score');
-const george = 10;
 
 //style
 const linerGradient = 'linear-gradient(180deg, rgba(0, 0, 0, 0.35) 19.27%, rgba(0, 0, 0, 0) 29.17%)';
