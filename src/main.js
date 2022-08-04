@@ -8,6 +8,16 @@ const api = axios.create({
     },
 });
 
+let lazyLoader = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+        if(entry.isIntersecting) {
+        const url = entry.target.getAttribute('data-img');
+        entry.target.setAttribute('src', url);
+        }
+    });
+})
+
 function loadCategory(container, category) {
     container.innerHTML = '';
     category.forEach(category => {
@@ -50,7 +60,7 @@ function loadCategory(container, category) {
     }     
 }; */
 
-function loadImage(container, iterator) {
+function loadImage(container, iterator, lazyLoaderr=false) {
     container.innerHTML = '';
    iterator.forEach(iterator => {
         const movieContainer = document.createElement('div');
@@ -61,8 +71,15 @@ function loadImage(container, iterator) {
         const movieImg =  document.createElement('img');
         movieImg.classList.add('movie-img');
         movieImg.setAttribute('alt',iterator.title);
-        movieImg.setAttribute('src', 
+        movieImg.setAttribute(lazyLoaderr ?'data-img' : 'src', 
         `https://image.tmdb.org/t/p/w300${iterator.poster_path}`);
+        movieImg.addEventListener('error', () => {
+            movieImg.setAttribute('src', 'https://images.pexels.com/photos/3747139/pexels-photo-3747139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        });
+
+        if(lazyLoaderr){
+        lazyLoader.observe(movieImg)
+        }
         movieContainer.appendChild(movieImg);
         container.appendChild(movieContainer);
     });
@@ -74,7 +91,7 @@ async function getTrendingMoviesPreview() {
     const movies = data.results;
     console.log(movies)
     
-    loadImage(trendingMoviesPreviewList, movies);   
+    loadImage(trendingMoviesPreviewList, movies, true);   
 };
 
 async function getCategoriesPreview() {
@@ -95,9 +112,9 @@ async function getMoviesByCategory(id) {
     });
 
     const movies = data.results;
-    console.log(movies)
+    console.log('categorias')
     
-    loadImage(genericSection, movies);
+    loadImage(genericSection, movies, true);
 };
 
 async function getMoviesBySearch(query) {
@@ -110,7 +127,7 @@ async function getMoviesBySearch(query) {
     const movies = data.results;
     console.log(movies)
     
-    loadImage(genericSection, movies);
+    loadImage(genericSection, movies, true);
 };
 
 async function getTrendingMovies() {
@@ -138,7 +155,7 @@ async function getMovieById(id) {
 async function getMoviesSimilar(movie_id) {
     const { data : movie } = await api(`movie/${movie_id}/similar`);
     headerSection.classList.add('.header-container--long');
-    loadImage(relatedMoviesContainer, movie.results);
+    loadImage(relatedMoviesContainer, movie.results, true);
 }
  /* getTrendingMoviesPreview(); */
 /* getCategoriesPreview(); */
